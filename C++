@@ -1,0 +1,215 @@
+#include "pch.h"
+#include "iostream"
+#include <cmath>
+#include "string"
+#include <algorithm>
+/*
+
+4 Октябрь - 10 Октябрь
+
+Занятие №5. Условный оператор (часть 2)
+*/
+using namespace System;
+using namespace std;
+void first()
+{
+    int a, b, c;
+    cin >> a >> b >> c;
+    if (a==b || a==c || b==c)
+    {
+        cout << "Равные есть";
+    }
+}
+
+void second()
+{
+    double x_center, y_center, x, y, r; 
+    cin >> x_center >> y_center >> x >> y >> r;
+    if ( pow(x_center - x, 2) + pow(x_center - x, 2) < pow(r, 2))
+    {
+        cout << "Входит в круг";
+    }
+    else
+    {
+        cout << "Не входит в круг";
+
+    }
+}
+
+string third()
+{
+    double x, y;
+    cin >> x >> y;
+    if (x == 0 || y == 0)
+    {
+        if (x == 0 && y>0)
+        {
+            return "1 2";
+        }
+        else if (x == 0 && y < 0)
+        {
+            return "3 4";
+        } 
+        else if( x>0 && y==0)
+        {
+            return "1 4";
+        }
+        else if( x>0 && y==0)
+        {
+            return "2 3";
+
+        }
+        else {
+            return "1 2 3 4";
+        }
+        
+
+    }
+    else if (x > 0)
+    {
+        if (y > 0) {
+            return "1";
+        }
+        else
+        {
+            return "4";
+        }
+    }
+    else if (x < 0)
+    {
+        if (y > 0)
+        {
+            return "2";
+        }
+        else
+        {
+            return "3";
+        }
+    }
+}
+
+pair<long float, long float> fourth()
+{
+    long float a, b, c;
+    cin >> a >> b >> c;
+    long float minimum = min(min(a, b), c);
+    long float maximum = max(max(a, b), c);
+    return pair<long float, long float>(minimum, maximum);
+}
+
+void fifth()
+{
+    int r = 2, g = 2  ,y=1, t;
+    cin >> t;
+    int time = t % (r + g + y);
+    cout << "time "<< time << endl;
+    if (time > g + y)
+    {
+        cout << "Красный" << endl;
+    }
+    else if (time > g) {
+        cout << "Желтый" << endl;
+    } 
+    else
+    {
+        cout << "Зелёный" << endl;
+    }
+
+
+    // time 0-59 
+    /*
+    green - 2m
+    yellow - 1m
+    red - 2m
+    */
+    
+}
+
+void sex()
+{
+    int x;
+    cin >> x;
+    // x^2 - 3x + 5 * sqrt(x^2 - 3x +76) = 260
+    if (pow(x, 2) - 3 * x + 76 < 0)
+    {
+        cout << "Значение x = " << x << " не может быть подставлено в заданное уравнение" << endl;
+    }
+    else
+    {
+        if (pow(x, 2) - 3*x+5 * sqrt(pow(x,2) + 3*x +76) == 260)
+        {
+            cout << "x, равное " << x << " является корнем"<<endl;
+        }
+        else {
+            cout << "x, равное " << x << " не является корнем" << endl;
+
+        }
+    }
+
+}
+
+void seven()
+{
+    int x1, x2, y1, y2, a1, b1, a2, b2;
+    // a)
+    cout << "x1 >> x2 >> y1 >> y2 >> a1 >> a2 >> b1 >> b2" << endl;
+    cin >> x1 >> x2 >> y1 >> y2 >> a1 >> a2 >> b1 >> b2;
+    bool sInF = x2 - x1 <= 0 && a2 >= a1 && b2 >= b1;// second in first
+    if (sInF)
+    {
+        cout << "a) все точки первого прямоугольника второму!!!! ВАМ ПОВЕЗЛО!!!! ";
+    
+    }
+    // b) 
+    bool fInS = x2 - x1 <= 0 && a2 >= a1 && b2 >= b1;// меньше или равно нулю исправь!!!
+    if (fInS || sInF)
+    {
+        cout << "b) все точки одного из прямоугольников другому";
+
+    }
+
+    // c) 
+    if (x2 < x1 + a1 < x2 + a2 && y2 <= y1 + b1 <= x2 + b2)
+    {
+        cout << "Прямоугольники пересекаются" << endl;
+    }
+
+}
+
+int main()
+{
+    setlocale(0, "rus");
+    seven();
+    /*
+    auto res_4 = fourth();
+    cout << "MIN: "<< res_4.first << endl;
+    cout << "MAX: "<< res_4.second << endl;
+    */
+
+    return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include "pch.h"
+#include <iostream>
+#include <algorithm>
+
+using namespace System;
+using namespace std;
+
+int main()
+{
+
+    int a1, a2, a3, b1, b2, b3;
+    cin >> a1 >> a2 >> a3 >> b1 >> b2>> b3;
+    int mina = min(min(a1, a2), min(a2, a3));
+    int minb = min(min(b1, b2), min(b2, b3));
+    int maxa = max(max(a1, a2), max(a2, a3));
+    int maxb = max(max(b1, b2), max(b2, b3));
+    int middlea = (a1 + a2 + a3) - mina - maxa;
+    int middleb = (b1 + b2 + b3) - minb - maxb;
+
+    cout << mina * minb + maxa * maxb + middlea* middleb;
+
+    return 0;
+}
